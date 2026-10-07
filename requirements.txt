@@ -1,0 +1,4 @@
+mistralai
+phonenumbers
+pdfkit
+cairosvg

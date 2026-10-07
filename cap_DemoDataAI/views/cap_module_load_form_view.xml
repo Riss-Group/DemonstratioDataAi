@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="module_load_view_list" model="ir.ui.view">
+        <field name="name">module.load.list</field>
+        <field name="model">module.load.action</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="state"/>
+                <field name="nb_tries"/>
+                <field name="dependent_module"/>
+                <field name="demo_data_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="module_load_view_form" model="ir.ui.view">
+        <field name="name">module.load.form</field>
+        <field name="model">module.load.action</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="retry" type="object" string="Retry"
+                            class="btn-primary"
+                            title="Relaunch the generation for this action"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="nb_tries"/>
+                        </group>
+                        <group>
+                            <field name="state"/>
+                            <field name="demo_data_id"/>
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="Prompt">
+                            <group>
+                                <field name="prompt"/>
+                            </group>
+                        </page>
+                        <page string="Error Logs">
+                            <group>
+                                <field name="logs"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="wiz_create_company_view" model="ir.ui.view">
+        <field name="name">Create Company Form View</field>
+        <field name="model">demo.data.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create Company">
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="country_id"/>
+                        <field name="city"/>
+                    </group>
+                    <group>
+                        <field name="email"/>
+                        <field name="logo"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="create_company" string="Create company" type="object" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="wiz_create_company_action" model="ir.actions.act_window">
+        <field name="name">Wizard Create company</field>
+        <field name="res_model">demo.data.wizard</field>
+        <field name="view_id" ref="wiz_create_company_view"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

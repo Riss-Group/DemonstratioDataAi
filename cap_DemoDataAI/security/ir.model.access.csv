@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_demo_data,ir.model.access,model_demo_data,base.group_user,1,1,1,1
+access_api_key,ir.model.access,model_api_key,base.group_user,1,1,1,1
+access_create_company_wizard,ir.model.access,model_demo_data_wizard,base.group_user,1,1,1,1
+access_module_load_action,ir.model.access,model_module_load_action,base.group_user,1,1,1,1

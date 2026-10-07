@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="demo_data_root_menu" name="Demo Data" web_icon="cap_DemoDataAI,static/img/odoo_icon.png">
+        <menuitem id="demo_data_first_level_menu" name="Forms">
+            <menuitem id="demo_data_menu_action" action="demo_data_form"/>
+        </menuitem>
+        <menuitem id="api_key_first_level_menu" name="API Keys">
+            <menuitem id="api_key_menu_action" action="api_key_form"/>
+        </menuitem>
+        <menuitem id="module_load_first_level" name="Module Loading">
+            <menuitem id="module_load_menu_action" action="module_load_list"/>
+        </menuitem>
+    </menuitem>
+</odoo>

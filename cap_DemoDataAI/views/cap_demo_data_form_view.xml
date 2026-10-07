@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="demo_data_view_form" model="ir.ui.view">
+        <field name="name">demo.data.form</field>
+        <field name="model">demo.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="create_company_open_wizard" type="object" string="Create Company"
+                            class="btn-primary"
+                            invisible="is_company_created == True"
+                            title="Create a company that fits this one's characteristic. Must set it manually after"/>
+                    <button name="create_items" type="object" string="Generate Demo Data" class="btn-success"
+                            title="Generate demonstration data for this lead based on the information written"
+                            invisible="is_company_created == False"
+                            confirm="Are you sure you want to continue?"/>
+                    <button name="delete_all_items" type="object" string="Clear Database"
+                            class="btn-danger"
+                            title="Reset environment to its default state with this module still installed"
+                            confirm="This will delete all records in the database as well as uninstall all additional modules, do you want to continue?"/>
+                </header>
+                <sheet>
+                    <div class="alert alert-info" role="alert">
+                        This module is used to generate data for a commercial demonstration. For more information,
+                        please refer to the
+                        <a href="https://www.captivea.com/odoo/knowledge/1436/knowledge/2399">documentation</a>
+                    </div>
+                    <group>
+                        <group string="Company Information">
+                            <field name="name" string="Company Name"/>
+                            <field name="city"/>
+                            <field name="lang"/>
+                            <field name="country_id"/>
+                            <field name="demo_date"/>
+                            <field name="bool_generate_background"/>
+                            <field name="bool_company_restricted"/>
+                        </group>
+                        <group string="Extra Information">
+                            <field name="business_sector" placeholder="Odoo integration for medium companies"/>
+                            <field name="average_customer" placeholder="Startups, Micro-enterprises, PME"
+                                   string="Customer Profile"/>
+                            <field name="influence" placeholder="Local / Regional / International"
+                                   string="Market Presence"/>
+                            <div>
+                                <group string="Customer types">
+                                    <field name="customer_professional" string="Professional"/>
+                                    <field name="customer_individual" string="Individual"/>
+                                </group>
+                            </div>
+                        </group>
+                    </group>
+                    <field name="linked_action_ids"/>
+
+                    <notebook>
+                        <page string="Modules to install">
+                            <group>
+                                <group>
+                                    <field name="accountant"/>
+                                    <field name="crm"/>
+                                    <field name="stock"/>
+                                    <field name="sale_management"/>
+                                    <field name="purchase"/>
+                                    <field name="website"/>
+                                    <field name="website_sale"/>
+                                    <field name="project"/>
+                                    <field name="hr"/>
+                                </group>
+                                <group>
+                                    <field name="timesheet_grid"/>
+                                    <field name="mrp"/>
+                                    <field name="quality_control"/>
+                                    <field name="mrp_plm"/>
+                                    <field name="marketing_automation"/>
+                                    <field name="hr_expense"/>
+                                    <field name="hr_recruitment"/>
+                                    <field name="hr_holidays"/>
+                                    <field name="helpdesk"/>
+                                </group>
+                            </group>
+                            <group>
+                            <group>
+                                <field name="nb_employees" invisible="not hr"/>
+                                <field name="bool_gen_employees_pictures" invisible="not hr"/>
+                                <field name="percent_employees_pictures" invisible="not bool_gen_employees_pictures or not hr" widget="percentage"/>
+                            </group>
+                            </group>
+                        </page>
+                        <page string="Company">
+                            <div class="alert alert-info" role="alert">
+                                Email and logo are optional fields for the company but will be in the created one if they are filled.
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="logo"/>
+                                    <field name="email" string="Email"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="API">
+                            <group>
+                                <group>
+                                    <field name="api_key_id"/>
+                                </group>
+                                <group>
+                                    <field name="mistral_model"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="demo_data_view_list" model="ir.ui.view">
+        <field name="name">demo.data.list</field>
+        <field name="model">demo.data</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="city"/>
+                <field name="country_id"/>
+            </list>
+        </field>
+    </record>
+</odoo>

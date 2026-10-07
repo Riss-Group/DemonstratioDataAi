@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inherit the CRM lead form view to add the feedback summary section -->
+    <record id="crm_lead_feedback_summary_form_view" model="ir.ui.view">
+        <field name="name">crm.lead.feedback.summary.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Add the Generate button in the status bar area -->
+            <xpath expr="//header" position="inside">
+                <button name="action_generate_feedback_summary"
+                        string="Generate Feedback Summary"
+                        type="object"
+                        class="btn-secondary"
+                        icon="fa-magic"
+                        title="Analyse all chatter messages and generate an AI feedback summary"/>
+            </xpath>
+
+            <!-- Add the Feedback Summary tab -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Feedback Summary" name="feedback_summary_page">
+                    <group>
+                        <group>
+                            <field name="feedback_summary_date"
+                                   string="Last Generated"
+                                   readonly="1"
+                                   optional="show"/>
+                        </group>
+                        <group>
+                            <button name="action_generate_feedback_summary"
+                                    string="Regenerate Summary"
+                                    type="object"
+                                    class="btn-primary"
+                                    icon="fa-refresh"
+                                    invisible="not feedback_summary"/>
+                        </group>
+                    </group>
+                    <div invisible="feedback_summary">
+                        <p class="text-muted fst-italic">
+                            No feedback summary yet. Click <strong>"Generate Feedback Summary"</strong>
+                            in the header to analyse the chatter and create one.
+                        </p>
+                    </div>
+                    <field name="feedback_summary"
+                           widget="html"
+                           readonly="1"
+                           invisible="not feedback_summary"
+                           nolabel="1"/>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
